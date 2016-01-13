@@ -32,7 +32,7 @@ class Euler(object):
         y_old = y0
         x_old = x0
         y_new = 0
-        for n in range(0, iterations):
+        for n in range(0, int(iterations)):
             y_new = y_old + step_size*self.function(x_old, y_old)
             y_old = y_new
             x_old = x_old + step_size
