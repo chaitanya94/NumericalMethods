@@ -1,13 +1,25 @@
 class Euler(object):
+    def __init__(self):
+        self.function = 0
     def help(self):
         print """
+        ===================================================================================================
             y(n+1) = y(n) + h * f(x(n), y(n))
             where,
                 h = Step size,
                 f(x, y) = Slope at (x, y)
+
+            Usage :
+                1) Decorate required function with 'get_function'.
+                2) Call method 'calculate' with a dictionary as parameter with the following defined:-
+                    a. step
+                    b. end_time
+                    c. initial_x
+                    d. initial_y
+        ===================================================================================================
         """
 
-    def get_function(self, func):
+    def set_function(self, func):
         self.function = func
 
     def calculate(self, kwargs):
@@ -29,7 +41,7 @@ class Euler(object):
 def test():
     euler = Euler()
 
-    @euler.get_function
+    @euler.set_function
     def test_func(x, y):
         return x
 
@@ -39,7 +51,7 @@ def test():
     initial_y = 0
     ans = euler.calculate(locals())
     print ans
-    print euler.help()
+    euler.help()
 
 if __name__ == '__main__':
     test()
